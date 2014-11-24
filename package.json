@@ -1,0 +1,11 @@
+{
+  "name": "HelloWorldr",
+  "version": "1.0.0",
+  "description": "Watches folder/files for changes and runs a command for quick tests.",
+  "scripts": {
+    "start": "bin/hello",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Henry Tseng <contact@henrytseng.com> (http://www.henrytseng.com/)",
+  "license": "MIT"
+}
