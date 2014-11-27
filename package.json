@@ -2,9 +2,16 @@
   "name": "HelloWorldr",
   "version": "1.0.0",
   "description": "Watches folder/files for changes and runs a command for quick tests.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:henrytseng/helloworldr.git"
+  },
+  "main": "./bin/hello",
   "scripts": {
-    "start": "bin/hello",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./tests/test"
+  },
+  "bin": {
+    "helloworldr": "./bin/hello"
   },
   "author": "Henry Tseng <contact@henrytseng.com> (http://www.henrytseng.com/)",
   "license": "MIT"
