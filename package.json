@@ -1,6 +1,6 @@
 {
   "name": "helloworldr",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Watches folder/files for changes and runs a command for quick tests.",
   "repository": {
     "type": "git",

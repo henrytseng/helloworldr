@@ -9,12 +9,12 @@ Installation
 
 Run the following
 
-	npm install helloworldr
+	npm install helloworldr -g
 
 Run
 ---
 
-`Usage: bin/hello {ext} {cmd}`
+`Usage: helloworldr {ext} {cmd}`
 
 For example:
 
