@@ -1,6 +1,6 @@
 {
   "name": "helloworldr",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Watches folder/files for changes and runs a command for quick tests.",
   "repository": {
     "type": "git",
@@ -14,5 +14,10 @@
     "helloworldr": "./bin/hello"
   },
   "author": "Henry Tseng <contact@henrytseng.com> (http://www.henrytseng.com/)",
+  "keywords": [
+    "hello world",
+    "command",
+    "cli"
+  ],
   "license": "MIT"
 }
