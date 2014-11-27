@@ -1,5 +1,5 @@
 {
-  "name": "HelloWorldr",
+  "name": "helloworldr",
   "version": "1.0.0",
   "description": "Watches folder/files for changes and runs a command for quick tests.",
   "repository": {
