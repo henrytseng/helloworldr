@@ -11,6 +11,7 @@ Run the following
 
 	npm install helloworldr -g
 
+
 Run
 ---
 
@@ -21,3 +22,11 @@ For example:
   helloworldr go "go run"
   
 Where `{ext}` is the extension of files to watch and `{cmd}` is the compile/run command.  
+
+
+License
+-------
+
+Copyright (c) 2014 Henry Tseng
+
+Released under the MIT license. See LICENSE for details.
