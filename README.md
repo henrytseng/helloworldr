@@ -7,16 +7,17 @@ Watches folder/files for changes and runs a command for quick tests.
 Installation
 ------------
 
-Copy the file to a convenient location such as your home folder.  For example,
+Run the following
 
-  ~/bin/hello
-
+	npm install helloworldr
 
 Run
 ---
 
-Usage: bin/hello {ext} {cmd}
+`Usage: bin/hello {ext} {cmd}`
 
-  ~/bin/hello go "go run"
+For example:
+
+  helloworldr go "go run"
   
-Where ext is the extension of files to watch and cmd is the compile/run command.  
+Where `{ext}` is the extension of files to watch and `{cmd}` is the compile/run command.  
