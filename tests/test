@@ -1,3 +1,4 @@
 #!/bin/bash
 
-./bin/hello go "go run"
+cd tests
+../bin/hello go "go run"

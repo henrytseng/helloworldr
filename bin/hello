@@ -33,7 +33,7 @@ function run(file) {
 
   // Complete
   child.on('close', function() {
-
+    console.log('\x1b[34mComplete', '\x1b[0m');
   });
 }
 
