@@ -21,7 +21,7 @@ var cmd = process.argv.pop();
 var ext = process.argv.pop();
 
 function run(file) {
-  console.log('\x1b[34mRunning:', cmd+file, '\x1b[0m');
+  console.log('\x1b[34mRunning:', cmd+' '+file, '\x1b[0m');
 
   var child = exec(cmd+' '+file);
   child.stdout.on('data', function(data) {
