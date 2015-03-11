@@ -64,7 +64,7 @@
       return _fatalError(err);
     }
 
-    timeoutDelay = config.timeout;
+    timeoutDelay = config.timeout || timeoutDelay;
 
     // Each entry
     var actionItems = config.watch || {};
