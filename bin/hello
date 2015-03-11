@@ -66,6 +66,8 @@
 
     timeoutDelay = config.timeout || timeoutDelay;
 
+    console.log(timeoutDelay);
+
     // Each entry
     var actionItems = config.watch || {};
     console.log('\x1b[34mWatching.\x1b[0m');
