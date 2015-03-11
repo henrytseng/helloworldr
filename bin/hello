@@ -1,45 +1,121 @@
 #!/usr/local/bin/node
 
-var fs = require('fs');
-var path = require('path');
-var exec = require('child_process').exec;
+(function() {
+  'use strict';
 
-var script = process.argv[1].split('/').pop();
+  var fs = require('fs');
+  var path = require('path');
+  var exec = require('child_process').exec;
+  var async = require('async');
+  var gaze = require('gaze');
 
-if(process.argv.length < 4) {
-  console.log('Usage: '+script+' {ext} {cmd}');
-  process.exit(1);
+  var commandName = process.argv[1].split('/').pop();
+  var configFilename = '.helloworldr';
 
-} else if(process.argv.indexOf('-h') !== -1) {
-  console.log('Usage: '+script+' {ext} {cmd}');
-  console.log(' {ext}  A file extension');
-  console.log(' {exec} A command to execute for each new file change');
-  process.exit();
-}
+  // Timeout in seconds
+  var timeoutDelay = 60;
 
-var cmd = process.argv.pop();
-var ext = process.argv.pop();
-
-function run(file) {
-  console.log('\x1b[34mRunning:', cmd+' '+file, '\x1b[0m');
-
-  var child = exec(cmd+' '+file);
-  child.stdout.on('data', function(data) {
-    process.stdout.write(data);
-  });
-  child.stderr.on('data', function(data) {
-    process.stderr.write(data);
-  });
-
-  // Complete
-  child.on('close', function() {
-    console.log('\x1b[34mComplete', '\x1b[0m');
-  });
-}
-
-console.log('\x1b[34mWatching:\x1b[0m');
-fs.watch(process.cwd(), function(event, filename) {
-  if(filename.match(new RegExp('.'+ext+'$'))) {
-    run(filename);
+  function _displayHelp() {
+    console.log('Usage: '+commandName+' {config}');
   }
-});
+
+  function _fatalError(err) {
+    console.error(err);
+    process.exit(1);
+  }
+
+  var i = 1;
+  function _iteration() {
+    return i++;
+  }
+
+  // Too many parameters
+  if(process.argv.length > 3) {
+    _displayHelp();
+    process.exit(1);
+
+  // Use different configuration file
+  } else if(process.argv.length === 3) {
+    configFilename = process.argv[2];
+
+  // Request help
+  } else if(process.argv.indexOf('-h') !== -1) {
+    _displayHelp();
+    process.exit();
+  }
+
+  var config = {};
+  async.series([
+
+    // Load config
+    function(next) {
+      fs.readFile(process.cwd() + path.sep + configFilename, function(err, data) {
+        try {
+          next(err, config = JSON.parse(data));
+
+        } catch(err) {
+          next(err);
+        }
+      });
+    }
+
+  ], function(err) {
+    if(err) {
+      return _fatalError(err);
+    }
+
+    timeoutDelay = config.timeout;
+
+    // Each entry
+    var actionItems = config.watch || {};
+    console.log('\x1b[34mWatching.\x1b[0m');
+    Object.keys(actionItems).forEach(function(pattern, i) {
+      var cmd = actionItems[pattern];
+      
+      /**
+       * Process a file
+       */
+      function _act(file) {
+        var activity = cmd.replace(/%[0-9]/, file);
+
+        console.log('\x1b[34mRunning ['+_iteration()+']:', activity.replace(process.cwd()+path.sep, ''), '\x1b[0m');
+        var child = exec(activity);
+
+        // Timeout
+        var timerInterval = setTimeout(function() {
+          child.kill('SIGHUP');
+        }, timeoutDelay);
+
+        child.stdout.on('data', function(data) {
+          process.stdout.write(data);
+        });
+        child.stderr.on('data', function(data) {
+          process.stderr.write(data);
+        });
+
+        // Complete
+        child.on('close', function() {
+          clearTimeout(timerInterval);
+          console.log('\x1b[34mComplete.\x1b[0m');
+        });
+      }
+
+      /**
+       * Watch file pattern
+       */
+      gaze(pattern, function(err, watcher) {
+        if(err) return _fatalError(err);
+
+        this.on('added', function(filepath) {
+          _act(filepath);
+        });
+
+        this.on('changed', function(filepath) {
+          _act(filepath);
+        });
+      });
+    });
+
+  });
+
+})();

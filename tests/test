@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd tests
-../bin/hello go "go run"
+../bin/hello
