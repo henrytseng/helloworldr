@@ -20,7 +20,7 @@
   }
 
   function _fatalError(err) {
-    console.error(err);
+    console.error(err.stack || err);
     process.exit(1);
   }
 
@@ -34,14 +34,14 @@
     _displayHelp();
     process.exit(1);
 
-  // Use different configuration file
-  } else if(process.argv.length === 3) {
-    configFilename = process.argv[2];
-
   // Request help
   } else if(process.argv.indexOf('-h') !== -1) {
     _displayHelp();
     process.exit();
+
+  // Use different configuration file
+  } else if(process.argv.length === 3) {
+    configFilename = process.argv[2];
   }
 
   var config = {};
