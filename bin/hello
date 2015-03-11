@@ -84,7 +84,7 @@
         // Timeout
         var timerInterval = setTimeout(function() {
           child.kill('SIGHUP');
-        }, timeoutDelay);
+        }, timeoutDelay * 1000);
 
         child.stdout.on('data', function(data) {
           process.stdout.write(data);
