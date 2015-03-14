@@ -1,6 +1,8 @@
 helloworldr
 ===========
 
+[![Join the chat at https://gitter.im/henrytseng/helloworldr](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/henrytseng/helloworldr?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Watches folder/files for changes and runs a command for quick tests.  Runs the command in a child process with a default timeout of 1 minute.  
 
 
