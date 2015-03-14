@@ -1,6 +1,9 @@
 helloworldr
 ===========
 
+[![Build Status](https://travis-ci.org/henrytseng/helloworldr.svg)](https://travis-ci.org/henrytseng/helloworldr)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/henrytseng/helloworldr?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 Watches folder/files for changes and runs a command for quick tests.  Runs the command in a child process with a default timeout of 1 minute.  
 
 
@@ -57,12 +60,16 @@ Then run:
 
 	$ helloworldr
 
+Optionally use a specific configuration file
+
+	$ helloworldr -c config.json
+
 
 
 
 License
 -------
 
-Copyright (c) 2014 Henry Tseng
+Copyright (c) 2015 Henry Tseng
 
 Released under the MIT license. See LICENSE for details.
