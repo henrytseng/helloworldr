@@ -22,19 +22,6 @@ Run the following
 Configuration
 -------------
 
-### timeout
-
-Number of seconds to wait before a child process timeout occurs.  
-
-**Example:** Timeout after 5 minutes
-
-```
-	{
-		"timeout": 300
-	}
-```
-
-
 ### watch
 
 Create a JSON file `.helloworldr`.  Associating the glob pattern to watch with the command to run.  
@@ -51,10 +38,26 @@ Create a JSON file `.helloworldr`.  Associating the glob pattern to watch with t
 ```
 
 
+### timeout
+
+Number of seconds to wait before a child process timeout occurs.  
+
+**Example:** Timeout after 5 minutes
+
+```
+	{
+		"timeout": 300,
+		"watch": {
+			"*.txt": "cat %1"
+		}
+	}
+```
+
+
 
 
 Run
----
+----
 
 Then run: 
 
