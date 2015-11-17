@@ -1,6 +1,6 @@
 {
   "name": "helloworldr",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Watches folder/files for changes and runs a command for quick tests.",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "dependencies": {
     "argr": "^1.1.4",
     "async": "~0.9.0",
-    "gaze": "~0.5.1",
+    "gaze": "^0.5.2",
     "lodash": "~2.4.1",
     "minimatch": "^3.0.0"
   },
