@@ -55,6 +55,12 @@ Here's a list of features we've added to enable
 Usage
 ------------
 
+Installation through bash script
+
+```
+curl -o- https://raw.githubusercontent.com/henrytseng/helloworldr/master/bin/hello | bash
+```
+
 Installation through NPM
 
 ```

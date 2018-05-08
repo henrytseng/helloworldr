@@ -10,7 +10,11 @@ RUN   \
 RUN   \
   apt-get -y upgrade
 
+# Install dependencies
+RUN   \
+  apt-get -y install curl git
+
 # Set the working directory
 WORKDIR /hello
 
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/hello/bin/hello"]

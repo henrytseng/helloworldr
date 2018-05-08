@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const packageConfig = require('../package.json');
+
+console.log(packageConfig;
