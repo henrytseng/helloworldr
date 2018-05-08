@@ -22,10 +22,13 @@ function init_env {
     pushd "$HELLO_HOME/versions"
     rm -rf latest
     git clone --depth 1 $GIT_REPO latest
-    LATEST_VERSION="$($NODE latest/lib/cli/get-version)"
+    cd latest
+    LATEST_VERSION="$($NODE lib/cli/get-version)"
+    cd ..
     mv latest $LATEST_VERSION
     popd
   fi
+  popd
 }
 
 # Install nvm if not already installed
