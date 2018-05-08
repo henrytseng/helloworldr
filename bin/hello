@@ -28,7 +28,6 @@ function init_env {
     mv latest $LATEST_VERSION
     popd
   fi
-  popd
 }
 
 # Install nvm if not already installed
