@@ -4,68 +4,76 @@ helloworldr
 [![Build Status](https://travis-ci.org/henrytseng/helloworldr.svg)](https://travis-ci.org/henrytseng/helloworldr)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/henrytseng/helloworldr?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Watches folder/files for changes and runs a command for quick tests.  Runs the command in a child process with a default timeout of 1 minute.  
+A build system designed for fast and flexible development pipeline.  
 
 
 
+## Overview
 
-Installation
+We've designed a flexible build system that is extendable and easy to use.  
+
+We've been there.  We've had to use multiple build systems that have all been deprecated over time.  They promised to be easy to use and deliver a tight workflow and each time we've had to tweek them for days until they worked just the way we needed them to for a project.  
+
+Here's what you do.  Define the following configuration.  
+
+1. Source(s)
+2. Build process
+3. Target
+4. Deploy
+
+For example: `hello.config.json` in JSON format here:
+
+```
+{
+    "reference": {
+        "main": {
+        	"source": "./main.scss",
+        	"build": [
+                {
+                    "execute": ""
+                }
+        	],
+        	"target": "./main.css"
+		}
+    }
+}
+```
+
+
+
+## Features
+
+Here's a list of features we've added to enable
+
+* Dependency graph and build target caching
+* Pipeline build concurrency
+* Deployment packaging
+* Extensibility
+
+
+
+Usage
 ------------
 
-Run the following
+Installation through NPM
 
-	npm install helloworldr -g
+```
+npm install -g helloworldr
+```
 
 
 
 
-Configuration
+Usage
 -------------
 
-### watch
+Create a configuration file `hello` then run:
 
-Create a JSON file `.helloworldr`.  Associating the glob pattern to watch with the command to run.  
+	$ hello
 
-**Example:** Watch all files with `.go` extension in any subfolder and execute the command `go run`.  Watch files in current path with `.txt` extension and print
+Optionally use a specific configuration file `config.json`
 
-```
-	{
-		"watch": {
-			"**/*.go": "go run %1",
-			"*.txt": "cat %1"
-		}
-	}
-```
-
-
-### timeout
-
-Number of seconds to wait before a child process timeout occurs.  
-
-**Example:** Timeout after 5 minutes
-
-```
-	{
-		"timeout": 300,
-		"watch": {
-			"*.txt": "cat %1"
-		}
-	}
-```
-
-
-
-
-Run
-----
-
-Then run: 
-
-	$ helloworldr
-
-Optionally use a specific configuration file
-
-	$ helloworldr -c config.json
+	$ hello -c config.json
 
 
 
@@ -73,6 +81,6 @@ Optionally use a specific configuration file
 License
 -------
 
-Copyright (c) 2015 Henry Tseng
+Copyright (c) 2018 Canvas Digital LLC
 
 Released under the MIT license. See LICENSE for details.
