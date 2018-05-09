@@ -1,0 +1,68 @@
+{
+  "builds": {
+    "main": {
+      "dependencies": [
+        "app:statics",
+        "app:styles",
+        "app:js",
+        "third-party:styles",
+        "third-party:js"
+      ]
+    },
+
+    "app:statics": {
+      "source": [
+        "./images/**/*.jpg",
+        "./images/**/*.gif"
+      ],
+      "actions": [
+        { "ref": "helloworldr-library" }
+      ],
+      "target": "./lib/[hash].[ext]"
+    },
+
+    "app:styles": {
+      "source": "./styles/**/*.scss",
+      "dependencies": [
+        "app:statics",
+      ],
+      "actions": [
+        { "ref": "helloworldr-sass" }
+      ],
+    	"target": "./[name].[hash].css"
+    },
+
+    "app:js": {
+      "dependencies": [
+        "app:statics",
+      ],
+      "actions": [
+        { "ref": "helloworldr-eslint" },
+        { "ref": "helloworldr-babel" },
+        {
+          "ref": "helloworld-jest",
+          "options": {
+            "config": "jest.config.json"
+          }
+        }
+      ],
+    	"target": "./[name].[hash].js"
+    },
+
+    "third-party:styles": {
+      "source": "./vendor/**/*.scss",
+      "actions": [
+        { "ref": "helloworldr-sass" }
+      ],
+    	"target": "./main.css"
+    },
+
+    "third-party:js": {
+      "source": "./vendor/**/*.js",
+      "actions": [
+        { "ref": "helloworldr-babel" }
+      ],
+    	"target": "./main.js"
+    }
+  }
+}

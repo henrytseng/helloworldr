@@ -1,0 +1,12 @@
+{
+  "name": "helloworldr-cli",
+  "version": "2.0.0",
+  "description": "Helloworldr CLI utility.",
+  "bin": {
+    "hello": "./bin/hello"
+  },
+  "author": "Henry Tseng <info@heycanvas.com> (http://www.heycanvas.com/)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -3,6 +3,41 @@
 /**
  * Module dependencies
  */
+
+class Hello {
+
+  bootstrap() {
+
+    // TODO list build targets
+    // TODO show help
+    // TODO build specific target
+    // TODO build cache
+
+  }
+
+  configure() {
+
+  }
+
+  build() {
+
+  }
+
+  bundle() {
+
+  }
+
+}
+
+// Execute immediately
+if(__filename.match(process.argv[1])) (new Hello()).bootstrap();
+
+module.exports = Hello;
+
+
+
+
+
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').exec;
@@ -15,6 +50,8 @@ const config = require('./config');
 
 // Bootstrap CLI
 const argr = require('./cli')(process.argv);
+
+
 
 /**
  * Track iterations

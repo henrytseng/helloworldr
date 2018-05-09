@@ -9,7 +9,7 @@ var _ = require('lodash');
 
 // Default settings
 var _defaults = {
-  timeout: 60
+  timeout: 60 * 60
 };
 
 var _config;

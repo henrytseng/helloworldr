@@ -13,7 +13,7 @@ module.exports = function(argv) {
    * Show help
    */
   function _displayHelp() {
-    console.log('Usage: '+argr.command().split(path.sep).pop());
+    console.log('Usage: '+argr.command().split(path.sep).pop()+ ' {action} {options}');
 
     // Build options
     var maxLine = '';
@@ -49,6 +49,9 @@ module.exports = function(argv) {
   // Check arguments
   try {
     argr.init(process.argv);
+    if(argr.action()) {
+      throw new Error("Action is required");
+    }
 
   } catch(e) {
     console.error("Invalid argument\n");

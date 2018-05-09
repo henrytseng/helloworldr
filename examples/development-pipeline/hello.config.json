@@ -1,0 +1,33 @@
+{
+  "builds": {
+    "main": {
+      "dependencies": [
+        "app:o",
+        "hello:o"
+      ],
+      "actions": [
+        "gcc -o main hello.o main.o"
+      ]
+    },
+
+    "app:o": {
+      "source": "main.*",
+      "actions": [
+        "gcc -c main.c"
+      ]
+    },
+
+    "hello:o": {
+      "source": "hello.*",
+      "actions": [
+        "gcc -c hello.c"
+      ]
+    },
+
+    "clean": {
+      "actions": [
+        "rm *.o main"
+      ]
+    }
+  }
+}

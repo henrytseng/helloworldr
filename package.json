@@ -7,32 +7,20 @@
     "url": "git@github.com:henrytseng/helloworldr.git"
   },
   "main": "lib/hello",
-  "scripts": {
-    "watch": "mocha tests/spec -w",
-    "test": "mocha"
-  },
-  "bin": {
-    "hello": "./bin/hello"
-  },
   "author": "Henry Tseng <info@heycanvas.com> (http://www.heycanvas.com/)",
   "keywords": [
     "hello world",
     "command",
-    "cli"
+    "cli",
+    "build",
+    "subprojects",
+    "dependencies",
+    "platform",
+    "framework"
   ],
   "license": "MIT",
-  "dependencies": {
-    "argr": "^1.1.7",
-    "async": "^2.6.0",
-    "gaze": "^1.1.2",
-    "lodash": "~2.4.1",
-    "minimatch": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "jest": "^22.4.3"
-  },
-  "engines": {
-    "node": ">=5.9"
+    "lerna": "^2.11.0"
   }
 }
